@@ -33,7 +33,7 @@ class FeedbackOptions extends Component {
           const btnId = shortid.generate();
 
           return (
-            <li className="feedbackBtn" key={btnId}>
+            <li key={btnId}>
               <button
                 className={css.button}
                 type="button"

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import Section from './Section/Section';
-import FeedbackOptions from './FeedbackOptions/FeedbackOptions';
-import Statistics from './Statistics/Statistics';
-import Notification from './Notification/Notification';
+import Section from './components/Section/Section';
+import FeedbackOptions from './components/FeedbackOptions/FeedbackOptions';
+import Statistics from './components/Statistics/Statistics';
+import Notification from './components/Notification/Notification';
 
 class App extends Component {
   state = {
@@ -12,11 +12,22 @@ class App extends Component {
   };
 
   handleFeedback = e => {
-    console.log(this.state);
     const { title } = e.target;
     this.setState(prevState => ({
       [title]: prevState[title] + 1,
     }));
+  };
+
+  countTotalFeedback = () => {
+    const { good, neutral, bad } = this.state;
+    const result = good + neutral + bad;
+    return result.toFixed();
+  };
+
+  countPositiveFeedbackPercentage = () => {
+    const { good, neutral, bad } = this.state;
+    const result = (good * 100) / (good + neutral + bad);
+    return result.toFixed();
   };
 
   render() {
@@ -34,11 +45,8 @@ class App extends Component {
               good={this.state.good}
               neutral={this.state.neutral}
               bad={this.state.bad}
-              total={this.state.good + this.state.neutral + this.state.bad}
-              positivePercentage={
-                (this.state.good * 100) /
-                (this.state.good + this.state.neutral + this.state.bad)
-              }
+              total={this.countTotalFeedback()}
+              positivePercentage={this.countPositiveFeedbackPercentage()}
             ></Statistics>
           ) : (
             <Notification text="There is no feedback"></Notification>

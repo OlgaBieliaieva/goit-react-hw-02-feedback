@@ -10,7 +10,7 @@ class Section extends Component {
   render() {
     return (
       <section className={css.sectionContainer}>
-        <h1 className="sectionTitle">{this.props.text}</h1>
+        <h1>{this.props.text}</h1>
         {this.props.children}
       </section>
     );

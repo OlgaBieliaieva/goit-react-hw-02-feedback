@@ -21,12 +21,12 @@ class Statistics extends Component {
           const fieldId = shortid.generate();
 
           return (
-            <li className="feedbackBtn" key={fieldId}>
+            <li key={fieldId}>
               {field !== 'positivePercentage'
-                ? `${field[0].toUpperCase() + field.slice(1)}: ${this.props[
-                    field
-                  ].toFixed()}`
-                : `Positive feedback: ${this.props[field].toFixed()}%`}
+                ? `${field[0].toUpperCase() + field.slice(1)}: ${
+                    this.props[field]
+                  }`
+                : `Positive feedback: ${this.props[field]}%`}
             </li>
           );
         })}
