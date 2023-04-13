@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
 import shortid from 'shortid';
 import PropTypes from 'prop-types';
-import css from './Feedback.module.css';
+import css from './FeedbackOptions.module.css';
 
-class FeedbackItems extends Component {
+class FeedbackOptions extends Component {
   static propTypes = {
-    data: PropTypes.shape({
+    options: PropTypes.shape({
       good: PropTypes.number.isRequired,
       neutral: PropTypes.number.isRequired,
       bad: PropTypes.number.isRequired,
     }),
   };
 
-  getBtnColor = fbType => {
-    switch (fbType) {
+  getBtnColor = title => {
+    switch (title) {
       case 'good':
         return 'green';
       case 'neutral':
@@ -25,7 +25,7 @@ class FeedbackItems extends Component {
     }
   };
   render() {
-    const feedbackBtns = Object.keys(this.props.data);
+    const feedbackBtns = Object.keys(this.props.options);
 
     return (
       <ul className={css.btnList}>
@@ -37,9 +37,9 @@ class FeedbackItems extends Component {
               <button
                 className={css.button}
                 type="button"
-                id={btnId}
-                fb-type={item}
+                title={item}
                 style={{ backgroundColor: this.getBtnColor(item) }}
+                onClick={this.props.onLeaveFeedback}
               >
                 {item.toUpperCase()}
               </button>
@@ -51,4 +51,4 @@ class FeedbackItems extends Component {
   }
 }
 
-export default FeedbackItems;
+export default FeedbackOptions;
