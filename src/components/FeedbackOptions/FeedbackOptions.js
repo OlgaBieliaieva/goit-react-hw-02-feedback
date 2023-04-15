@@ -10,6 +10,7 @@ class FeedbackOptions extends Component {
       neutral: PropTypes.number.isRequired,
       bad: PropTypes.number.isRequired,
     }),
+    onLeaveFeedback: PropTypes.func.isRequired,
   };
 
   getBtnColor = title => {
@@ -24,6 +25,7 @@ class FeedbackOptions extends Component {
         return 'red';
     }
   };
+
   render() {
     const feedbackBtns = Object.keys(this.props.options);
 
