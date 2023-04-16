@@ -8,8 +8,8 @@ class Statistics extends Component {
     good: PropTypes.number.isRequired,
     neutral: PropTypes.number.isRequired,
     bad: PropTypes.number.isRequired,
-    total: PropTypes.number.isRequired,
-    positivePercentage: PropTypes.func.isRequired,
+    total: PropTypes.string.isRequired,
+    positivePercentage: PropTypes.string.isRequired,
   };
 
   render() {
